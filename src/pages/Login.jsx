@@ -1,12 +1,7 @@
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockIcon from "@mui/icons-material/Lock";
@@ -15,8 +10,12 @@ import stockImage from "../assets/Stock-App.png";
 import { Container } from "@mui/material";
 import { Form, Formik } from "formik";
 import { object, string } from "yup";
+import { Button } from "@mui/material";
 
-export default function Login() {
+const Login = () => {
+  const submit = (e) => {
+    console.log(e);
+  };
   const loginSchema = object({
     email: string()
       .email("Lütfen geçerli bir email adresi giriniz")
@@ -41,7 +40,6 @@ export default function Login() {
           flexWrap: "wrap",
           alignItems: "center",
           justifyContent: "center",
-    
         }}
       >
         <Grid item xs={12} sm={10} md={6} lg={6} sx={{ order: 1 }}>
@@ -67,57 +65,61 @@ export default function Login() {
                 Login
               </Typography>
             </Grid>
-            <Grid item sx={{ width: "90%",}}>
+            <Grid item sx={{ width: "90%" }}>
               <Formik
                 initialValues={{ email: "", password: "" }}
                 validationSchema={loginSchema}
-                onSubmit={(values, action) => {
-                  console.log(values);
+                onSubmit={(values, actions) => {
+                  submit(values);
+                  actions.resetForm();
+                  actions.setSubmitting(false);
                 }}
               >
-              {()=>(
-                <Form>
-                  <Box
-                    sx={{
-                      mt: 1,
-                      display: "flex",
-                      flexDirection: "column",
-                  
-                    
-                    }}
-                  >
-                    <TextField
-                      margin="normal"
-                      required
-                      id="email"
-                      label="Email Address"
-                      name="email"
-                      autoComplete="email"
-                      autoFocus
-                    />
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      autoComplete="current-password"
-                    />
-
-                    <Button
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                      sx={{ mt: 3, mb: 2, backgroundColor: "blue" }}
+                {({values, errors, touched, handleChange, handleBlur}) => (
+                  <Form>
+                    <Box
+                      sx={{
+                        mt: 1,
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 2,
+                      }}
                     >
-                      Sign In
-                    </Button>
-                  </Box>
-                </Form>
-              )}
-               
+                      <TextField
+                        label="Email"
+                        name="email"
+                        id="email"
+                        type="email"
+                        variant="outlined"
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={touched?.email && Boolean(errors?.email)}
+                        helperText={errors?.email}
+                      />
+                      <TextField
+                        label="password"
+                        name="password"
+                        id="password"
+                        type="password"
+                        variant="outlined"
+                        value={values.password}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={touched?.password && Boolean(errors?.password)}
+                        helperText={errors?.password}
+                      />
+
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2, backgroundColor: "blue" }}
+                      >
+                        Sign In
+                      </Button>
+                    </Box>
+                  </Form>
+                )}
               </Formik>
             </Grid>
 
@@ -149,4 +151,5 @@ export default function Login() {
       </Grid>
     </Container>
   );
-}
+};
+export default Login;
