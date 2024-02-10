@@ -11,11 +11,10 @@ import { Container } from "@mui/material";
 import { Form, Formik } from "formik";
 import { object, string } from "yup";
 import { Button } from "@mui/material";
+import useAuthCalls from "../service/useAuthCalls";
 
 const Login = () => {
-  const submit = (e) => {
-    console.log(e);
-  };
+const {login}= useAuthCalls()
   const loginSchema = object({
     email: string()
       .email("Lütfen geçerli bir email adresi giriniz")
@@ -70,7 +69,7 @@ const Login = () => {
                 initialValues={{ email: "", password: "" }}
                 validationSchema={loginSchema}
                 onSubmit={(values, actions) => {
-                  submit(values);
+                  login(values);
                   actions.resetForm();
                   actions.setSubmitting(false);
                 }}
