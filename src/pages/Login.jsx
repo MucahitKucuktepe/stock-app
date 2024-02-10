@@ -14,7 +14,7 @@ import { Button } from "@mui/material";
 import useAuthCalls from "../service/useAuthCalls";
 
 const Login = () => {
-const {login}= useAuthCalls()
+  const { login } = useAuthCalls();
   const loginSchema = object({
     email: string()
       .email("Lütfen geçerli bir email adresi giriniz")
@@ -72,9 +72,12 @@ const {login}= useAuthCalls()
                   login(values);
                   actions.resetForm();
                   actions.setSubmitting(false);
+                  //? veriler global state e aktarılabilir
+                  //? Navigasyon yapılabilir
+                  //? toast yapılabilir
                 }}
               >
-                {({values, errors, touched, handleChange, handleBlur}) => (
+                {({ values, errors, touched, handleChange, handleBlur }) => (
                   <Form>
                     <Box
                       sx={{
