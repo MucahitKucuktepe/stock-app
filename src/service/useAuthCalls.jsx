@@ -2,11 +2,11 @@ import React from "react";
 import useAxios from "./useAxios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginSuccess, registerSuccess } from "../features/authSlice";
+import { fetchFail, fetchStart, loginSuccess, logoutSuccess, registerSuccess } from "../features/authSlice";
 import { toastErrorNotify,toastSuccessNotify} from "../helper/ToastNotify"
 const useAuthCalls = () => {
   const dispatch = useDispatch();
-  const { axiosPublic } = useAxios();
+  const { axiosPublic,axiosWithToken} = useAxios();
   const navigate = useNavigate();
   const login = async (userInfo) => {
     try {
@@ -32,9 +32,24 @@ const useAuthCalls = () => {
       toastErrorNotify("Register Unseccess!")
     }
   };
+  const logOut = async () => {
+    dispatch(fetchStart());
+    try {
+      // await axios.get(`${process.env.REACT_APP_BASE_URL}/auth/logout/`, {
+      //   headers: { Authorization: `Token ${token}` },
+      // });
+      await axiosWithToken("/auth/logout");
+      toastSuccessNotify("LogOut işlemi başarali");
+      dispatch(logoutSuccess());
+      // navigate("/")
+    } catch (error) {
+      dispatch(fetchFail());
+      toastErrorNotify("LogOut işlemi başarisiz!");
+      console.log(error);
+    }
+  };
   
-  
-  return { login, register };
+  return { login, register, logOut };
 };
 
 export default useAuthCalls;

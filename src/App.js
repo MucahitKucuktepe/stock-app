@@ -12,10 +12,10 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: red["900"],
+        main: grey["900"],
       },
       secondary: {
-        main: blue["900"],
+        main: blueGrey["900"],
       },
     },
   });
