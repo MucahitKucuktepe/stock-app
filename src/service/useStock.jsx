@@ -1,7 +1,7 @@
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 
 import { useDispatch } from "react-redux";
-import useAxios from "./Useaxios";
+import useAxios from "./useAxios";
 import { fetchFail, fetchStart, getPromiseSuccess, getStockSuccess } from "../features/stockSlice";
 const useStock = () => {
   const dispatch = useDispatch();
