@@ -12,5 +12,5 @@
 
 ## LİVE
 
-[Blog App](https://mucahitmehmet-blogapp.netlify.app/)
+[Stock App](https://mucahitmehmet-stock-manegment-app.netlify.app/)
 
