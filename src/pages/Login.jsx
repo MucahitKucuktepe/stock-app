@@ -1,7 +1,6 @@
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockIcon from "@mui/icons-material/Lock";
@@ -12,6 +11,7 @@ import { Form, Formik } from "formik";
 import { object, string } from "yup";
 import { Button } from "@mui/material";
 import useAuthCalls from "../service/useAuthCalls";
+import { Link, Navigate } from "react-router-dom";
 
 const Login = () => {
   const { login } = useAuthCalls();
@@ -117,7 +117,7 @@ const Login = () => {
                         variant="contained"
                         sx={{ mt: 3, mb: 2, backgroundColor: "blue" }}
                       >
-                       Login
+                        Login
                       </Button>
                     </Box>
                   </Form>
@@ -133,11 +133,9 @@ const Login = () => {
                 justifyContent: "center",
               }}
             >
-              <Grid item>
-                <Link href="/register" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
+              <Link to="/register" variant="body2">
+                {"Don't have an account? Sign Up"}
+              </Link>
             </Grid>
           </Grid>
         </Grid>

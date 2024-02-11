@@ -1,7 +1,6 @@
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockIcon from "@mui/icons-material/Lock";
@@ -13,6 +12,7 @@ import { object, string } from "yup";
 import { Button } from "@mui/material";
 import useAuthCalls from "../service/useAuthCalls";
 import RegisterForm, { RegisterSchema } from "../components/RegisterForm";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const { login, register } = useAuthCalls();
@@ -93,7 +93,7 @@ const Register = () => {
               }}
             >
               <Grid item>
-                <Link href="/" variant="body2">
+                <Link to="/" variant="body2">
                   {"Do you have an account?"}
                 </Link>
               </Grid>
