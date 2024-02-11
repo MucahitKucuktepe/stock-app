@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import useStock from "../service/useStock";
+import KPI from "../components/KPI";
+import Charts from "../components/Charts";
 
 const Home = () => {
+  const { getStocks } = useStock();
+
+  useEffect(() => {
+    getStocks("sales");
+    getStocks("purchases");
+  }, []);
+
   return (
-    <div>
-      Home
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam nobis saepe
-        veniam, possimus id voluptate optio voluptates sunt quae perspiciatis,
-        quam excepturi fugit enim accusamus eligendi tempora. Autem, cum
-        architecto?
-      </p>
-    </div>
+    <>
+      <KPI />
+      <Charts />
+    </>
   );
 };
 

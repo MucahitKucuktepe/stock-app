@@ -1,4 +1,4 @@
-import { Grid, Stack } from "@mui/material";
+import { Grid } from "@mui/material";
 import { AreaChart, Card, Title } from "@tremor/react";
 import { useSelector } from "react-redux";
 
