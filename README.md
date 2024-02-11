@@ -8,7 +8,7 @@
 - `@emotion/react`
 - `@emotion/styled`
 
-![Blog App](blogapp.gif)
+![Stock App](stockapp.gif)
 
 ## LİVE
 
