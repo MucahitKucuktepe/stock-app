@@ -3,6 +3,7 @@ import useStock from "../service/useStock";
 import KPI from "../components/KPI";
 import Charts from "../components/Charts";
 
+
 const Home = () => {
   const { getStocks } = useStock();
 
@@ -15,6 +16,7 @@ const Home = () => {
     <>
       <KPI />
       <Charts />
+
     </>
   );
 };
