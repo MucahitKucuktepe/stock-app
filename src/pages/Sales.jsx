@@ -32,7 +32,7 @@ export default function Sales() {
   return (
     <div>
       <Typography variant="h4" style={{ color: "red" }} py={"10px"} mb={3}>
-       Sales
+       Sales 
       </Typography>
       <Button
         sx={{
